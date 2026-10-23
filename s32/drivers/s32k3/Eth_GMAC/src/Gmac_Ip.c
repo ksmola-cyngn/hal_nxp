@@ -909,6 +909,9 @@ static boolean Gmac_Ip_RestoreRxCtxtDescr(Gmac_Ip_BufferDescriptorType *Bd)
         Bd->Des1  = 0U;
         Bd->Des2  = 0U;
         Bd->Info1 &= ~GMAC_INFO1_CONSUMED_MASK;
+        /* The Rx tail pointer stays at the end of the ring, so the DMA may fetch this
+         * descriptor at any time: the buffer address must be visible before OWN is. */
+        MCAL_DATA_SYNC_BARRIER();
         Bd->Des3  = GMAC_RDES3_OWN_MASK | GMAC_RDES3_INTE_MASK | GMAC_RDES3_BUF1V_MASK;
 
         restored = TRUE;
@@ -1858,6 +1861,9 @@ void Gmac_Ip_SetRxExternalBuffer(uint8 Instance,
     Bd->Des2 = 0U;
     Bd->Info0 = (uint32)Buff->Data;
     Bd->Info1 = (uint32)((uint32)Buff->Length & GMAC_INFO1_LENGTH_MASK);
+    /* The Rx tail pointer stays at the end of the ring, so the DMA may fetch this
+     * descriptor at any time: the buffer address must be visible before OWN is. */
+    MCAL_DATA_SYNC_BARRIER();
     Bd->Des3  = GMAC_RDES3_OWN_MASK | GMAC_RDES3_INTE_MASK | GMAC_RDES3_BUF1V_MASK;
    
     Gmac_apxState[Instance]->RxAllocDesc[Ring]++;
@@ -1916,6 +1922,9 @@ void Gmac_Ip_ProvideRxBuff(uint8 Instance,
     Bd->Des2 = 0U;
     Bd->Info0 = (uint32)Buff->Data;
     Bd->Info1 &= ~GMAC_INFO1_CONSUMED_MASK;
+    /* The Rx tail pointer stays at the end of the ring, so the DMA may fetch this
+     * descriptor at any time: the buffer address must be visible before OWN is. */
+    MCAL_DATA_SYNC_BARRIER();
     Bd->Des3 = GMAC_RDES3_OWN_MASK | GMAC_RDES3_INTE_MASK | GMAC_RDES3_BUF1V_MASK;
 
     Gmac_apxState[Instance]->RxAllocDesc[Ring]++;
