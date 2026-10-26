@@ -378,6 +378,43 @@ static void Clock_Ip_CodeInRamSetFlashWaitStates(void)
 
     ConfiguredCoreClock = (*Clock_Ip_pxConfig->ConfiguredFrequencies)[Clock_Ip_FreqIds[CORE_CLK]].ConfiguredFrequencyValue;
 
+#if defined(CLOCK_IP_FLASH_WAIT_STATES_30MHZ_STEPS)
+    /* S32K358, S32K348, S32K338, S32K328 and S32K388 flash needs one more wait state for
+     * every 30 MHz (S32K3xx Data Sheet rev. 9, table 34) - more than the parts the table
+     * below was written for at the same frequency, e.g. 5 rather than 4 at 160 MHz. */
+    if (ConfiguredCoreClock <= 60000000U)
+    {
+        RwscSetting = 1U;
+    }
+    else if (ConfiguredCoreClock <= 90000000U)
+    {
+        RwscSetting = 2U;
+    }
+    else if (ConfiguredCoreClock <= 120000000U)
+    {
+        RwscSetting = 3U;
+    }
+    else if (ConfiguredCoreClock <= 150000000U)
+    {
+        RwscSetting = 4U;
+    }
+    else if (ConfiguredCoreClock <= 180000000U)
+    {
+        RwscSetting = 5U;
+    }
+    else if (ConfiguredCoreClock <= 210000000U)
+    {
+        RwscSetting = 6U;
+    }
+    else if (ConfiguredCoreClock <= 240000000U)
+    {
+        RwscSetting = 7U;
+    }
+    else
+    {
+        RwscSetting = 8U;
+    }
+#else
     if (ConfiguredCoreClock <= 167000000U)
     {
         if (ConfiguredCoreClock <= 66000000U)
@@ -416,6 +453,7 @@ static void Clock_Ip_CodeInRamSetFlashWaitStates(void)
             RwscSetting = 7U;
         }
     }
+#endif
 
     /* Update register value with the new WS value. */
     RegValue = IP_FLASH->CTL;

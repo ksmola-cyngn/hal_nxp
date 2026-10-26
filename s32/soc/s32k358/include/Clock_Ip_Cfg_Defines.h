@@ -194,6 +194,10 @@ extern "C"{
 */
 #define CLOCK_IP_HAS_FLASH_WAIT_STATES
 /**
+* @brief            Flash wait states follow the S32K3x8 table: one per 30 MHz.
+*/
+#define CLOCK_IP_FLASH_WAIT_STATES_30MHZ_STEPS
+/**
 * @brief            Clock ip supports to disable FIRC in STDBY mode
 */
 #define CLOCK_IP_HAS_FIRC_STDBY_CLOCK_DISABLE
