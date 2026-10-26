@@ -366,7 +366,7 @@ static const Clock_Ip_DividerConfigType Clock_Ip_DividerConfigurations_0[CLOCK_I
     #if CLOCK_IP_CONFIGURED_DIVIDERS_0_NO > 1U
     {
         PLL_PHI0_CLK,                    /* name */
-        3U,                              /* value */
+        2U,                              /* value */
         {
             0U,
         }
@@ -376,7 +376,7 @@ static const Clock_Ip_DividerConfigType Clock_Ip_DividerConfigurations_0[CLOCK_I
     #if CLOCK_IP_CONFIGURED_DIVIDERS_0_NO > 2U
     {
         PLL_PHI1_CLK,                    /* name */
-        3U,                              /* value */
+        1U,                              /* value */
         {
             0U,
         }
@@ -1402,7 +1402,7 @@ static const Clock_Ip_CmuConfigType Clock_Ip_CmuConfigurations_0[CLOCK_IP_CONFIG
             CMU_FC_IER_FLLAIE(0U) |
             CMU_FC_IER_FHHAIE(0U)
         ),
-        160000000U,
+        240000000U,
         {
                 0U,          /* Start index in register values array */
                 0U,          /* End index in register values array */
@@ -1419,7 +1419,7 @@ static const Clock_Ip_CmuConfigType Clock_Ip_CmuConfigurations_0[CLOCK_IP_CONFIG
             CMU_FC_IER_FLLAIE(0U) |
             CMU_FC_IER_FHHAIE(0U)
         ),
-        80000000U,
+        120000000U,
         {
                 0U,          /* Start index in register values array */
                 0U,          /* End index in register values array */
@@ -1436,7 +1436,7 @@ static const Clock_Ip_CmuConfigType Clock_Ip_CmuConfigurations_0[CLOCK_IP_CONFIG
             CMU_FC_IER_FLLAIE(0U) |
             CMU_FC_IER_FHHAIE(0U)
         ),
-        80000000U,
+        120000000U,
         {
                 0U,          /* Start index in register values array */
                 0U,          /* End index in register values array */
@@ -1467,19 +1467,19 @@ static const Clock_Ip_ConfiguredFrequencyType Clock_Ip_ConfiguredFrequencyConfig
     #if CLOCK_IP_CONFIGURED_FREQUENCIES_0_NO > 3U
     {
         CORE_CLK,
-        160000000U,
+        240000000U,
     },
     #endif
     #if CLOCK_IP_CONFIGURED_FREQUENCIES_0_NO > 4U
     {
         AIPS_PLAT_CLK,
-        80000000U,
+        120000000U,
     },
     #endif
     #if CLOCK_IP_CONFIGURED_FREQUENCIES_0_NO > 5U
     {
         AIPS_SLOW_CLK,
-        40000000U,
+        60000000U,
     },
     #endif
 };
@@ -2357,7 +2357,7 @@ static const Clock_Ip_CmuConfigType Clock_Ip_CmuConfigurations_1[CLOCK_IP_CONFIG
             CMU_FC_IER_FLLAIE(0U) |
             CMU_FC_IER_FHHAIE(0U)
         ),
-        160000000U,
+        240000000U,
         {
                 0U,          /* Start index in register values array */
                 0U,          /* End index in register values array */
@@ -2374,7 +2374,7 @@ static const Clock_Ip_CmuConfigType Clock_Ip_CmuConfigurations_1[CLOCK_IP_CONFIG
             CMU_FC_IER_FLLAIE(0U) |
             CMU_FC_IER_FHHAIE(0U)
         ),
-        80000000U,
+        120000000U,
         {
                 0U,          /* Start index in register values array */
                 0U,          /* End index in register values array */
@@ -2391,7 +2391,7 @@ static const Clock_Ip_CmuConfigType Clock_Ip_CmuConfigurations_1[CLOCK_IP_CONFIG
             CMU_FC_IER_FLLAIE(0U) |
             CMU_FC_IER_FHHAIE(0U)
         ),
-        80000000U,
+        120000000U,
         {
                 0U,          /* Start index in register values array */
                 0U,          /* End index in register values array */
@@ -2422,19 +2422,19 @@ static const Clock_Ip_ConfiguredFrequencyType Clock_Ip_ConfiguredFrequencyConfig
     #if CLOCK_IP_CONFIGURED_FREQUENCIES_1_NO > 3U
     {
         CORE_CLK,
-        160000000U,
+        240000000U,
     },
     #endif
     #if CLOCK_IP_CONFIGURED_FREQUENCIES_1_NO > 4U
     {
         AIPS_PLAT_CLK,
-        80000000U,
+        120000000U,
     },
     #endif
     #if CLOCK_IP_CONFIGURED_FREQUENCIES_1_NO > 5U
     {
         AIPS_SLOW_CLK,
-        40000000U,
+        60000000U,
     },
     #endif
 };
