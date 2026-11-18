@@ -79,9 +79,14 @@
  * RM, PFLASH chapter:
  * For 512 KB blocks, the first half of the block is protected with super sector granularity.
  * For 1 MB blocks, the first 768 KB is protected with super sector granularity.
+ * For 2 MB blocks, the first 1792 KB is protected with super sector granularity.
  */
 
-#if FSL_FEATURE_FLASH_C40_BLOCK_SIZE_CODE == (1024 * 1024)
+#if FSL_FEATURE_FLASH_C40_BLOCK_SIZE_CODE == (2048 * 1024)
+
+#define C40_MAX_SUPER_SECTOR_BLOCK_AREA (1792 * 1024)
+
+#elif FSL_FEATURE_FLASH_C40_BLOCK_SIZE_CODE == (1024 * 1024)
 
 #define C40_MAX_SUPER_SECTOR_BLOCK_AREA (768 * 1024)
 
